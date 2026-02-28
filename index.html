@@ -3,86 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech & Market - Tienda Online</title>
+    <title>Tech & Market - Sabores & Tecnología</title>
+    <!-- Fonts modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #6a5acd;
-            --primary-light: #8a7de3;
-            --secondary: #ff7b54;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --success: #28a745;
-            --warning: #ffc107;
-            --border-radius: 12px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
+        /* MISMO CSS ANTERIOR - Se mantiene igual */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
         }
-        
+
         body {
-            background-color: #f5f7ff;
-            color: var(--dark);
+            background: linear-gradient(145deg, #1a2f3f 0%, #0f1e26 100%);
+            color: white;
+            font-family: 'Inter', sans-serif;
             max-width: 100%;
             overflow-x: hidden;
             padding-bottom: 80px;
+            min-height: 100vh;
         }
-        
+
         .container {
             width: 100%;
             padding: 0 15px;
         }
-        
-        /* Header */
+
+        /* Header moderno como libro de recetas */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding: 18px 15px;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: var(--shadow);
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .logo h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            font-weight: 700;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #ff9f1c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
+
         .logo-icon {
             font-size: 1.8rem;
+            color: #ff9f1c;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
         }
-        
+
         .cart-icon {
             position: relative;
             font-size: 1.5rem;
             cursor: pointer;
+            color: white;
         }
-        
+
         .cart-count {
             position: absolute;
             top: -8px;
             right: -8px;
-            background-color: var(--secondary);
-            color: white;
+            background-color: #ff9f1c;
+            color: #1a2f3f;
             border-radius: 50%;
             width: 20px;
             height: 20px;
@@ -92,130 +94,141 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-        
-        /* Barra de búsqueda */
+
+        /* Barra de búsqueda estilo recetas */
         .search-container {
             padding: 0 15px;
             margin: 15px 0;
         }
-        
+
         .search-box {
             position: relative;
             width: 100%;
         }
-        
+
         .search-input {
             width: 100%;
             padding: 16px 20px 16px 50px;
             border: none;
-            border-radius: var(--border-radius);
-            background-color: white;
-            box-shadow: var(--shadow);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             font-size: 1rem;
-            color: var(--dark);
+            color: white;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        
+
         .search-input:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+            border-color: #ff9f1c;
+            background: rgba(255,255,255,0.15);
         }
-        
+
+        .search-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
         .search-icon {
             position: absolute;
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--primary);
+            color: #ff9f1c;
             font-size: 1.2rem;
         }
-        
+
         .suggestions-container {
             position: absolute;
             top: 100%;
             left: 0;
             right: 0;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            background: rgba(26, 47, 63, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             margin-top: 5px;
             max-height: 300px;
             overflow-y: auto;
             z-index: 10;
             display: none;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         .suggestions-container.active {
             display: block;
         }
-        
+
         .suggestion-item {
             padding: 15px 20px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             cursor: pointer;
             transition: background-color 0.2s;
         }
-        
+
         .suggestion-item:hover {
-            background-color: #f8f9fa;
+            background: rgba(255,159,28,0.2);
         }
-        
+
         .suggestion-image {
             width: 40px;
             height: 40px;
             object-fit: cover;
-            border-radius: 6px;
+            border-radius: 10px;
             margin-right: 15px;
         }
-        
+
         .suggestion-info {
             flex: 1;
         }
-        
+
         .suggestion-name {
             font-weight: 600;
             margin-bottom: 5px;
+            color: white;
         }
-        
+
         .suggestion-price {
-            color: var(--secondary);
+            color: #ff9f1c;
             font-weight: 600;
             font-size: 0.9rem;
         }
-        
+
         .suggestion-category {
             font-size: 0.75rem;
-            color: var(--primary);
-            background-color: rgba(106, 90, 205, 0.1);
+            color: white;
+            background: rgba(255,159,28,0.3);
             padding: 3px 8px;
             border-radius: 30px;
         }
-        
-        /* Banner */
+
+        /* Banner estilo recetas */
         .banner {
-            background: linear-gradient(rgba(106, 90, 205, 0.9), rgba(138, 125, 227, 0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
+            background: linear-gradient(rgba(255,159,28,0.9), rgba(245,124,0,0.9)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 25px 20px;
+            padding: 30px 25px;
             margin: 15px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            border-radius: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
-        
+
         .banner h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             margin-bottom: 8px;
         }
-        
+
         .banner p {
             opacity: 0.9;
             font-size: 0.95rem;
         }
-        
-        /* Categorías */
+
+        /* Categorías estilo recetas */
         .categories {
             display: flex;
             gap: 15px;
@@ -224,137 +237,157 @@
             overflow-x: auto;
             scrollbar-width: none;
         }
-        
+
         .categories::-webkit-scrollbar {
             display: none;
         }
-        
+
         .category-btn {
-            background-color: white;
-            border: none;
-            padding: 12px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 25px;
             border-radius: 30px;
             font-weight: 600;
-            color: var(--gray);
             white-space: nowrap;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
+
+        .category-btn i {
+            color: #ff9f1c;
+        }
+
         .category-btn.active, .category-btn:hover {
-            background-color: var(--primary);
-            color: white;
+            background: #ff9f1c;
+            color: #1a2f3f;
+            border-color: #ff9f1c;
         }
-        
+
+        .category-btn.active i, .category-btn:hover i {
+            color: #1a2f3f;
+        }
+
         /* Productos */
         .products-section {
             padding: 0 15px;
         }
-        
+
         .section-title {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 25px;
         }
-        
+
         .product-card {
-            background-color: white;
-            border-radius: var(--border-radius);
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
         }
-        
+
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: #ff9f1c;
         }
-        
+
         .product-image {
             height: 140px;
             width: 100%;
             object-fit: cover;
             background-color: #f0f2f5;
         }
-        
+
         .product-info {
             padding: 15px;
         }
-        
+
         .product-category {
             font-size: 0.75rem;
-            color: var(--primary);
+            color: #ff9f1c;
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        
+
         .product-name {
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 8px;
             line-height: 1.3;
+            color: #1a2f3f;
         }
-        
+
         .product-price {
             font-size: 1.2rem;
             font-weight: 700;
-            color: var(--secondary);
+            color: #f57c00;
             margin-bottom: 12px;
         }
-        
+
         .add-to-cart {
-            background-color: var(--primary);
-            color: white;
+            background: #ff9f1c;
+            color: #1a2f3f;
             border: none;
             width: 100%;
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 12px;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .add-to-cart:hover {
-            background-color: var(--primary-light);
+            background: #f57c00;
+            transform: scale(0.98);
         }
-        
-        /* Vista de Detalle del Producto */
+
+        /* Vista de Detalle del Producto (estilo recetas) */
         .product-detail-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: white;
+            background: linear-gradient(145deg, #1a2f3f 0%, #0f1e26 100%);
             z-index: 1100;
             overflow-y: auto;
             transform: translateY(100%);
             transition: transform 0.4s ease;
         }
-        
+
         .product-detail-modal.active {
             transform: translateY(0);
         }
-        
+
         .detail-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background: linear-gradient(135deg, #ff9f1c 0%, #f57c00 100%);
             padding: 20px;
             position: sticky;
             top: 0;
@@ -363,106 +396,130 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .detail-header h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
+            color: #1a2f3f;
         }
-        
+
         .close-detail {
-            background: none;
+            background: rgba(255,255,255,0.2);
             border: none;
-            color: white;
+            color: #1a2f3f;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
+        .close-detail:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
         .detail-content {
             padding: 20px;
+            color: white;
         }
-        
+
         .detail-image {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            border-radius: var(--border-radius);
+            border-radius: 20px;
             margin-bottom: 20px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
-        
+
         .detail-category {
             font-size: 0.85rem;
-            color: var(--primary);
+            color: #ff9f1c;
             font-weight: 600;
             text-transform: uppercase;
             margin-bottom: 10px;
             display: inline-block;
-            background-color: rgba(106, 90, 205, 0.1);
+            background: rgba(255,159,28,0.2);
             padding: 5px 12px;
             border-radius: 20px;
         }
-        
+
         .detail-name {
+            font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: white;
         }
-        
+
         .detail-price {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--secondary);
+            color: #ff9f1c;
             margin-bottom: 20px;
         }
-        
+
         .detail-description {
             margin-bottom: 25px;
             line-height: 1.6;
-            color: #555;
+            color: rgba(255,255,255,0.8);
         }
-        
+
         .detail-features {
             margin-bottom: 25px;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 20px;
+            border-left: 5px solid #ff9f1c;
         }
-        
+
         .detail-features h4 {
             font-size: 1.1rem;
             margin-bottom: 12px;
-            color: var(--dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
+
         .features-list {
             list-style-type: none;
         }
-        
+
         .features-list li {
             padding: 8px 0;
             padding-left: 25px;
             position: relative;
-            color: #555;
+            color: rgba(255,255,255,0.8);
         }
-        
+
         .features-list li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: var(--success);
+            color: #ff9f1c;
             font-weight: bold;
         }
-        
+
         .detail-actions {
             display: flex;
             gap: 15px;
             margin-top: 30px;
         }
-        
+
         .buy-now-btn {
             flex: 2;
-            background-color: var(--secondary);
-            color: white;
+            background: #ff9f1c;
+            color: #1a2f3f;
             border: none;
             padding: 16px;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
             display: flex;
@@ -470,33 +527,36 @@
             justify-content: center;
             gap: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .buy-now-btn:hover {
-            background-color: #ff6b3d;
+            background: #f57c00;
+            transform: scale(0.98);
         }
-        
+
         .add-to-cart-btn {
             flex: 1;
-            background-color: var(--primary);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
             color: white;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.2);
             padding: 16px;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .add-to-cart-btn:hover {
-            background-color: var(--primary-light);
+            background: rgba(255,159,28,0.3);
+            border-color: #ff9f1c;
         }
-        
+
         /* Formulario de Envío */
         .shipping-form-modal {
             position: fixed;
@@ -504,20 +564,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: white;
+            background: linear-gradient(145deg, #1a2f3f 0%, #0f1e26 100%);
             z-index: 1200;
             overflow-y: auto;
             transform: translateY(100%);
             transition: transform 0.4s ease;
         }
-        
+
         .shipping-form-modal.active {
             transform: translateY(0);
         }
-        
+
         .shipping-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background: linear-gradient(135deg, #ff9f1c 0%, #f57c00 100%);
             padding: 20px;
             position: sticky;
             top: 0;
@@ -526,195 +585,218 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .shipping-header h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
+            color: #1a2f3f;
         }
-        
+
         .close-shipping {
-            background: none;
+            background: rgba(255,255,255,0.2);
             border: none;
-            color: white;
+            color: #1a2f3f;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
+        .close-shipping:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
         .shipping-content {
             padding: 20px;
+            color: white;
         }
-        
+
         .form-title {
+            font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: white;
             text-align: center;
         }
-        
+
         .saved-shipping-info {
-            background-color: #e8f5e9;
-            border-radius: var(--border-radius);
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
             padding: 20px;
             margin-bottom: 25px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--success);
+            border-left: 4px solid #28a745;
+            backdrop-filter: blur(10px);
         }
-        
+
         .saved-shipping-info h4 {
             font-size: 1.1rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: white;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .saved-shipping-info h4 i {
-            color: var(--success);
+            color: #28a745;
         }
-        
+
         .saved-info-item {
             margin-bottom: 8px;
             font-size: 0.95rem;
             display: flex;
+            color: rgba(255,255,255,0.8);
         }
-        
+
         .saved-info-label {
             font-weight: 600;
             min-width: 120px;
-            color: var(--dark);
-        }
-        
-        .saved-info-value {
-            color: #555;
-            flex: 1;
-        }
-        
-        .use-saved-info-btn {
-            background-color: var(--primary);
             color: white;
+        }
+
+        .use-saved-info-btn {
+            background: #ff9f1c;
+            color: #1a2f3f;
             border: none;
             padding: 12px 20px;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             width: 100%;
             margin-top: 15px;
         }
-        
+
         .use-saved-info-btn:hover {
-            background-color: var(--primary-light);
+            background: #f57c00;
+            transform: scale(0.98);
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--dark);
+            color: white;
         }
-        
+
         .form-label.required:after {
             content: " *";
-            color: #dc3545;
+            color: #ff9f1c;
         }
-        
+
         .form-input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: var(--border-radius);
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            transition: all 0.3s;
+            color: white;
         }
-        
+
         .form-input:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: #ff9f1c;
+            background: rgba(255,255,255,0.15);
         }
-        
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
         .form-input.error {
             border-color: #dc3545;
         }
-        
+
         .error-message {
-            color: #dc3545;
+            color: #ff9f1c;
             font-size: 0.85rem;
             margin-top: 5px;
             display: none;
         }
-        
+
         .error-message.active {
             display: block;
         }
-        
+
         .form-row {
             display: flex;
             gap: 15px;
         }
-        
+
         .form-row .form-group {
             flex: 1;
         }
-        
+
         .form-note {
             font-size: 0.9rem;
-            color: var(--gray);
+            color: rgba(255,255,255,0.6);
             margin-top: 5px;
             font-style: italic;
         }
-        
+
         .order-summary {
-            background-color: #f8f9fa;
-            border-radius: var(--border-radius);
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 20px;
             margin: 25px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         .order-summary h3 {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            color: var(--dark);
+            color: #ff9f1c;
         }
-        
+
         .summary-item {
             display: flex;
             justify-content: space-between;
             margin-bottom: 10px;
             padding-bottom: 10px;
-            border-bottom: 1px dashed #ddd;
+            border-bottom: 1px dashed rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.8);
         }
-        
+
         .summary-total {
             font-weight: 700;
             font-size: 1.2rem;
-            color: var(--secondary);
+            color: #ff9f1c;
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 2px solid #ddd;
+            border-top: 2px solid rgba(255,255,255,0.2);
         }
-        
+
         .form-actions {
             display: flex;
             gap: 15px;
             margin-top: 30px;
         }
-        
+
         .submit-order-btn {
             flex: 2;
-            background-color: var(--secondary);
-            color: white;
+            background: #ff9f1c;
+            color: #1a2f3f;
             border: none;
             padding: 18px;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
             display: flex;
@@ -722,38 +804,43 @@
             justify-content: center;
             gap: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .submit-order-btn:hover {
-            background-color: #ff6b3d;
+            background: #f57c00;
+            transform: scale(0.98);
         }
-        
+
         .submit-order-btn:disabled {
-            background-color: #ccc;
+            background: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.5);
             cursor: not-allowed;
+            transform: none;
         }
-        
+
         .back-to-cart-btn {
             flex: 1;
-            background-color: #6c757d;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
             color: white;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.2);
             padding: 18px;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .back-to-cart-btn:hover {
-            background-color: #5a6268;
+            background: rgba(255,159,28,0.3);
+            border-color: #ff9f1c;
         }
-        
+
         /* Carrito lateral */
         .cart-sidebar {
             position: fixed;
@@ -761,135 +848,158 @@
             right: -100%;
             width: 85%;
             height: 100%;
-            background-color: white;
+            background: linear-gradient(145deg, #1a2f3f 0%, #0f1e26 100%);
             z-index: 1000;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
             transition: right 0.4s ease;
             display: flex;
             flex-direction: column;
         }
-        
+
         .cart-sidebar.active {
             right: 0;
         }
-        
+
         .cart-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background: linear-gradient(135deg, #ff9f1c 0%, #f57c00 100%);
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .cart-header h3 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
+            color: #1a2f3f;
         }
-        
+
         .close-cart {
-            background: none;
+            background: rgba(255,255,255,0.2);
             border: none;
-            color: white;
+            color: #1a2f3f;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
+        .close-cart:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
         .cart-items {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
         }
-        
+
         .cart-item {
             display: flex;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: white;
         }
-        
+
         .cart-item-image {
             width: 70px;
             height: 70px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-right: 15px;
         }
-        
+
         .cart-item-details {
             flex: 1;
         }
-        
+
         .cart-item-name {
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+
         .cart-item-price {
-            color: var(--secondary);
+            color: #ff9f1c;
             font-weight: 600;
             margin-bottom: 8px;
         }
-        
+
         .cart-item-actions {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .quantity-btn {
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            border: 1px solid var(--primary);
-            background-color: white;
-            color: var(--primary);
+            border: 1px solid #ff9f1c;
+            background: rgba(255,255,255,0.1);
+            color: #ff9f1c;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: all 0.3s;
         }
-        
+
+        .quantity-btn:hover {
+            background: #ff9f1c;
+            color: #1a2f3f;
+        }
+
         .quantity {
             font-weight: 600;
             min-width: 25px;
             text-align: center;
         }
-        
+
         .remove-item {
             color: #dc3545;
             background: none;
             border: none;
             margin-left: auto;
             cursor: pointer;
+            font-size: 1.2rem;
         }
-        
+
         .cart-footer {
             padding: 20px;
-            border-top: 1px solid #eee;
-            background-color: #f9f9f9;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
         }
-        
+
         .cart-total {
             display: flex;
             justify-content: space-between;
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: var(--dark);
+            color: white;
         }
-        
+
         .cart-actions {
             display: flex;
             gap: 10px;
         }
-        
+
         .checkout-btn {
             flex: 2;
-            background-color: var(--secondary);
-            color: white;
+            background: #ff9f1c;
+            color: #1a2f3f;
             border: none;
             padding: 15px;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: 700;
             font-size: 1.1rem;
             display: flex;
@@ -897,25 +1007,29 @@
             justify-content: center;
             gap: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .checkout-btn:hover {
-            background-color: #ff6b3d;
+            background: #f57c00;
+            transform: scale(0.98);
         }
-        
+
         .checkout-btn:disabled {
-            background-color: #ccc;
+            background: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.5);
             cursor: not-allowed;
+            transform: none;
         }
-        
+
         .edit-shipping-btn {
             flex: 1;
-            background-color: var(--primary-light);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
             color: white;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.2);
             padding: 15px;
-            border-radius: var(--border-radius);
+            border-radius: 50px;
             font-weight: 600;
             font-size: 1rem;
             display: flex;
@@ -923,13 +1037,195 @@
             justify-content: center;
             gap: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .edit-shipping-btn:hover {
-            background-color: var(--primary);
+            background: rgba(255,159,28,0.3);
+            border-color: #ff9f1c;
         }
-        
+
+        /* Panel de Recetas (nuevo) */
+        .recipes-sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 85%;
+            height: 100%;
+            background: linear-gradient(145deg, #1a2f3f 0%, #0f1e26 100%);
+            z-index: 1000;
+            box-shadow: 5px 0 30px rgba(0,0,0,0.5);
+            transition: left 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .recipes-sidebar.active {
+            left: 0;
+        }
+
+        .recipes-header {
+            background: linear-gradient(135deg, #ff9f1c 0%, #f57c00 100%);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .recipes-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #1a2f3f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-recipes {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: #1a2f3f;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-recipes:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .recipes-content {
+            padding: 20px;
+        }
+
+        .recipes-search {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .recipes-search input {
+            width: 100%;
+            padding: 15px 20px 15px 45px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .recipes-search input:focus {
+            outline: none;
+            border-color: #ff9f1c;
+        }
+
+        .recipes-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff9f1c;
+        }
+
+        .recipes-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .recipes-filter-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .recipes-filter-btn i {
+            color: #ff9f1c;
+        }
+
+        .recipes-filter-btn.active {
+            background: #ff9f1c;
+            color: #1a2f3f;
+        }
+
+        .recipes-filter-btn.active i {
+            color: #1a2f3f;
+        }
+
+        .recipes-grid-small {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            max-height: calc(100vh - 250px);
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .recipe-mini-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 12px;
+            display: flex;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .recipe-mini-card:hover {
+            background: rgba(255,159,28,0.2);
+            transform: translateX(5px);
+            border-color: #ff9f1c;
+        }
+
+        .recipe-mini-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .recipe-mini-info {
+            flex: 1;
+        }
+
+        .recipe-mini-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .recipe-mini-meta {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            display: flex;
+            gap: 10px;
+        }
+
+        .recipe-mini-meta i {
+            color: #ff9f1c;
+        }
+
         /* Historial lateral */
         .history-sidebar {
             position: fixed;
@@ -937,103 +1233,119 @@
             left: -100%;
             width: 85%;
             height: 100%;
-            background-color: white;
+            background: linear-gradient(145deg, #1a2f3f 0%, #0f1e26 100%);
             z-index: 1000;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            box-shadow: 5px 0 30px rgba(0,0,0,0.5);
             transition: left 0.4s ease;
             display: flex;
             flex-direction: column;
         }
-        
+
         .history-sidebar.active {
             left: 0;
         }
-        
+
         .history-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
+            background: linear-gradient(135deg, #ff9f1c 0%, #f57c00 100%);
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .history-header h3 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
+            color: #1a2f3f;
         }
-        
+
         .close-history {
-            background: none;
+            background: rgba(255,255,255,0.2);
             border: none;
-            color: white;
+            color: #1a2f3f;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
+        .close-history:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
         .history-items {
             flex: 1;
             padding: 20px;
             overflow-y: auto;
         }
-        
+
         .history-item {
-            background-color: #f9f9f9;
-            border-radius: var(--border-radius);
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
             padding: 15px;
             margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         .history-date {
             font-size: 0.9rem;
-            color: var(--gray);
+            color: rgba(255,255,255,0.6);
             margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
         }
-        
+
         .history-products {
             margin-top: 10px;
         }
-        
+
         .history-product {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8px;
             font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
         }
-        
+
         .history-total {
             font-weight: 700;
-            color: var(--secondary);
+            color: #ff9f1c;
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 1px dashed #ddd;
+            border-top: 1px dashed rgba(255,255,255,0.2);
             display: flex;
             justify-content: space-between;
         }
-        
+
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
             z-index: 999;
             display: none;
         }
-        
+
         .overlay.active {
             display: block;
         }
-        
+
         /* WhatsApp flotante */
         .whatsapp-float {
             position: fixed;
             bottom: 90px;
             right: 20px;
-            background-color: #25D366;
+            background: #25D366;
             color: white;
             width: 60px;
             height: 60px;
@@ -1042,51 +1354,87 @@
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             z-index: 99;
             text-decoration: none;
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .whatsapp-float:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
         }
-        
-        /* Footer móvil */
+
+        /* Footer móvil con libro de recetas */
         .mobile-footer {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: white;
+            background: rgba(26, 47, 63, 0.95);
+            backdrop-filter: blur(10px);
             padding: 15px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             z-index: 98;
             display: flex;
             justify-content: space-around;
         }
-        
+
         .footer-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
             background: none;
             border: none;
-            color: var(--gray);
+            color: rgba(255,255,255,0.6);
             font-size: 0.9rem;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
-        
+
         .footer-btn.active, .footer-btn:hover {
-            color: var(--primary);
+            color: #ff9f1c;
+            transform: translateY(-3px);
         }
-        
+
         .footer-btn i {
             font-size: 1.3rem;
             margin-bottom: 5px;
         }
-        
+
+        /* Notificación */
+        .notification {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff9f1c;
+            color: #1a2f3f;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 10000;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        /* Aviso de mínimo de compra */
+        .minimum-purchase-notice {
+            background: rgba(255,159,28,0.2);
+            border: 1px solid #ff9f1c;
+            color: #ff9f1c;
+            padding: 10px 15px;
+            border-radius: 50px;
+            margin: 10px 15px;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .minimum-purchase-notice.visible {
+            display: block;
+        }
+
         /* Responsive */
         @media (min-width: 768px) {
             .container {
@@ -1098,7 +1446,7 @@
                 grid-template-columns: repeat(3, 1fr);
             }
             
-            .cart-sidebar, .history-sidebar {
+            .cart-sidebar, .history-sidebar, .recipes-sidebar {
                 width: 400px;
             }
             
@@ -1116,43 +1464,6 @@
             .product-detail-modal.active, .shipping-form-modal.active {
                 transform: translate(-50%, 0);
             }
-            
-            .detail-image {
-                height: 300px;
-            }
-        }
-        
-        /* Notificación */
-        .notification {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--success);
-            color: white;
-            padding: 12px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            z-index: 10000;
-            font-weight: 600;
-            transition: opacity 0.3s;
-        }
-        
-        /* Aviso de mínimo de compra */
-        .minimum-purchase-notice {
-            background-color: #fff3cd;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            padding: 10px 15px;
-            border-radius: var(--border-radius);
-            margin: 10px 15px;
-            font-size: 0.9rem;
-            text-align: center;
-            display: none;
-        }
-        
-        .minimum-purchase-notice.visible {
-            display: block;
         }
     </style>
 </head>
@@ -1197,10 +1508,10 @@
     
     <!-- Categorías -->
     <div class="categories">
-        <button class="category-btn active" data-category="all">Todos</button>
-        <button class="category-btn" data-category="electronics">Electrónicos</button>
-        <button class="category-btn" data-category="food">Comestibles</button>
-        <button class="category-btn" data-category="cleaning">Accesorios de Limpieza</button>
+        <button class="category-btn active" data-category="all"><i class="fas fa-utensils"></i> Todos</button>
+        <button class="category-btn" data-category="electronics"><i class="fas fa-microchip"></i> Electrónicos</button>
+        <button class="category-btn" data-category="food"><i class="fas fa-utensil-spoon"></i> Comestibles</button>
+        <button class="category-btn" data-category="cleaning"><i class="fas fa-broom"></i> Limpieza</button>
     </div>
     
     <!-- Productos -->
@@ -1332,7 +1643,7 @@
         
         <div class="cart-items" id="cart-items">
             <!-- Los productos del carrito se cargarán aquí -->
-            <p class="empty-cart-message" id="empty-cart-message">Tu carrito está vacío</p>
+            <p class="empty-cart-message" id="empty-cart-message" style="color: white; text-align: center;">Tu carrito está vacío</p>
         </div>
         
         <div class="cart-footer">
@@ -1353,6 +1664,34 @@
         </div>
     </div>
     
+    <!-- Panel de Recetas (nuevo) -->
+    <div class="recipes-sidebar" id="recipes-sidebar">
+        <div class="recipes-header">
+            <h3><i class="fas fa-utensils"></i> Recetas Latinas</h3>
+            <button class="close-recipes" id="close-recipes">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="recipes-content">
+            <div class="recipes-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="recipes-search-input" placeholder="Buscar recetas...">
+            </div>
+            
+            <div class="recipes-filters" id="recipes-filters">
+                <button class="recipes-filter-btn active" data-filter="all"><i class="fas fa-utensils"></i> Todas</button>
+                <button class="recipes-filter-btn" data-filter="platos"><i class="fas fa-utensil-spoon"></i> Platos</button>
+                <button class="recipes-filter-btn" data-filter="bebidas"><i class="fas fa-cocktail"></i> Bebidas</button>
+                <button class="recipes-filter-btn" data-filter="postres"><i class="fas fa-cake"></i> Postres</button>
+            </div>
+            
+            <div class="recipes-grid-small" id="recipes-grid-small">
+                <!-- Las recetas se cargarán aquí -->
+            </div>
+        </div>
+    </div>
+    
     <!-- Historial lateral -->
     <div class="history-sidebar" id="history-sidebar">
         <div class="history-header">
@@ -1364,7 +1703,7 @@
         
         <div class="history-items" id="history-items">
             <!-- El historial se cargará aquí -->
-            <p class="empty-history-message" id="empty-history-message">Aún no tienes compras realizadas</p>
+            <p class="empty-history-message" id="empty-history-message" style="color: white; text-align: center;">Aún no tienes compras realizadas</p>
         </div>
     </div>
     
@@ -1373,11 +1712,15 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <!-- Footer móvil -->
+    <!-- Footer móvil con libro de recetas -->
     <div class="mobile-footer">
         <button class="footer-btn active" id="home-btn">
             <i class="fas fa-home"></i>
             Inicio
+        </button>
+        <button class="footer-btn" id="recipes-footer-btn">
+            <i class="fas fa-utensils"></i>
+            Recetas
         </button>
         <button class="footer-btn" id="history-btn">
             <i class="fas fa-history"></i>
@@ -1386,200 +1729,182 @@
     </div>
 
     <script>
-        // Datos de productos - TODOS CONVERTIDOS A PESOS CHILENOS (multiplicados por 1000)
+        // Datos de productos
         const products = [
-            // Electrónicos (24 productos)
+            // Electrónicos
             {
                 id: 1,
                 name: "Transmisor FM Bluetooth para automóvil Q7",
                 category: "electronics",
-                price: 5000, // CLP 5.000.000
+                price: 5000,
                 image: "https://i.pinimg.com/1200x/d7/dc/d8/d7dcd813f8f590767a1b84096de0fed7.jpg",
-                tags: ["transmisor FM", "bluetooth", "automóvil", "audio", "manos libres", "cargador USB"],
-                description: "Te permite reproducir música y realizar llamadas manos libres directamente desde tu automóvil. Se conecta fácilmente por Bluetooth a tu celular y transmite el audio a la radio del vehículo mediante frecuencia FM. Cuenta con puertos USB para cargar dispositivos y un diseño compacto ideal para viajes seguros y entretenidos.",
+                tags: ["transmisor FM", "bluetooth", "automóvil"],
+                description: "Te permite reproducir música y realizar llamadas manos libres desde tu automóvil.",
                 features: [
-                    "Conexión Bluetooth para música y llamadas manos libres",
-                    "Puertos USB para carga de dispositivos",
-                    "Diseño compacto y fácil de instalar"
+                    "Conexión Bluetooth",
+                    "Puertos USB para carga",
+                    "Diseño compacto"
                 ]
             },
             {
                 id: 2,
                 name: "Cargador de coche de 150W PD30W",
                 category: "electronics",
-                price: 10000, // CLP 9.000.000
+                price: 10000,
                 image: "https://i.pinimg.com/1200x/5b/e7/18/5be7189c6b80c0fb3b68b9ab34f29538.jpg",
-                tags: ["cargador de coche", "150W", "PD30W", "USB-C", "carga rápida", "accesorios de auto"],
-                description: "Es un cargador vehicular de alta potencia diseñado para mantener tus dispositivos siempre con energía mientras conduces. Con una salida máxima de 150 W y soporte para PD 30 W, permite una carga rápida y eficiente de teléfonos, tablets, laptops ligeras y otros dispositivos compatibles con USB-C.",
+                tags: ["cargador", "coche", "rápido"],
+                description: "Cargador vehicular de alta potencia con PD30W para carga rápida.",
                 features: [
-                    "Potencia total de hasta 150 W",
-                    "Soporte Power Delivery 30 W",
-                    "Carga rápida para dispositivos USB-C/iPhone",
-                    "Compatibilidad con móviles, tablets y laptops ligeras",
-                    "Diseño compacto y resistente para uso en auto"
+                    "Potencia 150W",
+                    "Carga rápida PD30W",
+                    "Diseño compacto"
                 ]
             },
             {
                 id: 3,
                 name: "Pistola de calor",
                 category: "electronics",
-                price: 17000, // CLP 17.000.000
+                price: 17000,
                 image: "https://i.pinimg.com/736x/eb/f5/cd/ebf5cd34ca2918f207458baba144f217.jpg",
-                tags: ["pistola de calor", "herramientas", "aire caliente", "bricolaje", "reparaciones", "DIY"],
-                description: "Herramienta versátil para múltiples aplicaciones en el hogar y taller. Ideal para retirar pintura, doblar plásticos, soldar, encoger tubos termorretráctiles y más. Con temperatura ajustable y diseño ergonómico para un uso cómodo y seguro.",
+                tags: ["pistola calor", "herramientas"],
+                description: "Herramienta versátil para múltiples aplicaciones.",
                 features: [
-                    "Emisión de aire caliente ajustable",
-                    "Ideal para bricolaje y reparaciones",
-                    "Elimina pintura y barniz fácilmente",
-                    "Ayuda a doblar plásticos y tubos",
-                    "Diseño ergonómico para manejo cómodo"
+                    "Temperatura ajustable",
+                    "Uso versátil",
+                    "Diseño ergonómico"
                 ]
             },
             {
                 id: 4,
                 name: "Cable Tipo C 1M",
                 category: "electronics",
-                price: 3000, // CLP 34.990
+                price: 3000,
                 image: "https://i.pinimg.com/1200x/73/4c/70/734c706a78c926718636ec296cf74e13.jpg",
-                tags: ["cable tipo C", "USB-C", "carga rápida", "transferencia de datos", "accesorios móviles", "tecnología"],
-                description: "Cable USB-C de 1 metro que permite una carga rápida y una transferencia de datos estable y segura. Es compatible con una amplia variedad de dispositivos como teléfonos, tablets y otros equipos con puerto USB-C.",
+                tags: ["cable", "USB-C"],
+                description: "Cable USB-C de 1 metro con carga rápida.",
                 features: [
-                    "Cable USB Tipo C de 1M",
-                    "Compatible con carga rápida",
-                    "Transferencia de datos estable",
-                    "Alta durabilidad para uso diario",
-                    "Compatible con múltiples dispositivos USB-C"
+                    "Carga rápida",
+                    "Transferencia estable",
+                    "Alta durabilidad"
                 ]
             },
             {
                 id: 5,
                 name: "Rodillo automático para huevos",
                 category: "electronics",
-                price: 4000, // CLP 19.990
+                price: 4000,
                 image: "https://i.pinimg.com/1200x/c1/ff/9e/c1ff9ef66c6a82fceaa3b1bd40a9e2e4.jpg",
-                tags: ["rodillo de huevos", "organizador de huevos", "cocina", "accesorios de cocina", "almacenamiento", "automático"],
-                description: "Práctico organizador de cocina que permite almacenar y dispensar los huevos de forma automática por gravedad. Facilita el orden en el refrigerador, optimiza el espacio y ayuda a usar primero los huevos más antiguos.",
+                tags: ["organizador", "huevos", "cocina"],
+                description: "Organizador automático de huevos por gravedad.",
                 features: [
-                    "Sistema automático por gravedad",
-                    "Facilita la rotación y uso de huevos",
-                    "Ahorra espacio en el refrigerador",
-                    "Diseño práctico y fácil de usar",
-                    "Ideal para mantener la cocina organizada"
+                    "Sistema por gravedad",
+                    "Ahorra espacio",
+                    "Diseño práctico"
                 ]
             },
-          
-          {id: 4,
-                name: "Original Thinkplus Auriculares Inalámbricos Bluetooth",
-                category: "electronics",
-                price: 8000, // CLP 19.990
-                image: "https://i.pinimg.com/1200x/e7/7d/51/e77d51fc35ea2424f1e76ca5ebbdae68.jpg",
-                tags: ["auriculares inalámbricos", "bluetooth", "cancelación de ruido", "gaming", "micrófono HD", "audio"],
-                description: "ofrecen sonido de alta calidad con cancelación activa de ruido (ANC) y un micrófono HD para llamadas claras. Diseñados tanto para uso diario como para gaming, proporcionan comodidad durante largas sesiones y conectividad Bluetooth estable. Ideales para escuchar música, jugar o hacer llamadas sin distracciones.",
-                features: [
-                    "Conectividad Bluetooth inalámbrica",
-  "Cancelación activa de ruido (ANC)",
-  "Micrófono HD integrado para llamadas",
-  "Sonido de alta calidad para música y juegos",
-  "Diseño cómodo para uso prolongado"
-                ]
-            },
-          
-          
-          
-          
-            // Comestibles (24 productos)
             {
                 id: 6,
-                name: "Harina Pan",
-                category: "food",
-                price: 1600, // CLP 12.500
-                image: "https://i.pinimg.com/1200x/d5/40/3f/d5403f378d3a1687a447146b062eed55.jpg",
-                tags: ["harina PAN", "harina de maíz", "arepas", "productos básicos"],
-                description: "Harina de maíz precocida, ideal para preparar arepas, empanadas, hallacas y muchas recetas tradicionales. Fácil de usar, de textura suave y sabor auténtico, perfecta para el consumo diario en el hogar.",
+                name: "Auriculares Bluetooth Thinkplus",
+                category: "electronics",
+                price: 8000,
+                image: "https://i.pinimg.com/1200x/e7/7d/51/e77d51fc35ea2424f1e76ca5ebbdae68.jpg",
+                tags: ["auriculares", "bluetooth"],
+                description: "Auriculares con cancelación de ruido ANC.",
                 features: [
-                    "Fácil y rápida de preparar",
-                    "Ideal para arepas, empanadas y recetas tradicionales",
-                    "Textura suave y sabor auténtico",
-                    "Producto versátil para cocina diaria"
+                    "Cancelación de ruido",
+                    "Micrófono HD",
+                    "Sonido de alta calidad"
                 ]
             },
+            // Comestibles
             {
                 id: 7,
-                name: "Yuca Fresca",
+                name: "Harina Pan",
                 category: "food",
-                price: 3000, // CLP 8.750
-                image: "https://i.pinimg.com/736x/bb/16/2b/bb162bf25258fdc6dbfe7c5d10754163.jpg",
-                tags: ["yuca", "alimentos", "cocina", "producto fresco", "raíces"],
-                description: "Yuca natural y versátil, ideal para preparar platos tradicionales como yuca cocida, frita o en puré. Destaca por su sabor suave y su textura firme, siendo un alimento básico en muchas cocinas.",
+                price: 1600,
+                image: "https://i.pinimg.com/1200x/d5/40/3f/d5403f378d3a1687a447146b062eed55.jpg",
+                tags: ["harina", "arepas"],
+                description: "Harina de maíz precocida para arepas.",
                 features: [
-                    "Sabor suave y textura firme",
-                    "Ideal para hervir, freír o preparar purés",
-                    "Alimento versátil para distintas recetas",
-                    "Producto básico de cocina"
+                    "Fácil preparación",
+                    "Sabor auténtico",
+                    "Textura suave"
                 ]
             },
             {
                 id: 8,
-                name: "Plátano Verde",
+                name: "Yuca Fresca",
                 category: "food",
-                price: 2300, // CLP 7.250
-                image: "https://i.pinimg.com/736x/16/06/9a/16069a50bbf5db402a6d832fd98d5539.jpg",
-                tags: ["plátano verde", "alimentos", "cocina", "producto fresco", "ingredientes"],
-                description: "Plátano verde fresco, ideal para preparar platos tradicionales como frituras, purés o acompañamientos. Su textura firme y sabor neutro lo hacen perfecto para múltiples recetas en la cocina diaria.",
+                price: 3000,
+                image: "https://i.pinimg.com/736x/bb/16/2b/bb162bf25258fdc6dbfe7c5d10754163.jpg",
+                tags: ["yuca", "fresco"],
+                description: "Yuca natural para preparaciones tradicionales.",
                 features: [
-                    "Plátano verde fresco",
-                    "Textura firme ideal para freír o hervir",
-                    "Ingrediente básico en recetas tradicionales",
-                    "Versátil para cocina diaria"
+                    "Sabor suave",
+                    "Ideal para freír",
+                    "Textura firme"
                 ]
             },
             {
                 id: 9,
-                name: "Plátano Maduro",
+                name: "Plátano Verde",
                 category: "food",
-                price: 2500, // CLP 9.990
-                image: "https://i.pinimg.com/1200x/a2/e2/b2/a2e2b2d7b5c93203728534237a9f1f69.jpg",
-                tags: ["plátano maduro", "freír", "alimentos", "cocina", "producto fresco"],
-                description: "Plátano maduro ideal tanto para freír como para hervir. Su sabor dulce y su textura suave lo convierten en un excelente acompañamiento para comidas tradicionales, desayunos y platos caseros.",
+                price: 2300,
+                image: "https://i.pinimg.com/736x/16/06/9a/16069a50bbf5db402a6d832fd98d5539.jpg",
+                tags: ["plátano", "verde"],
+                description: "Plátano verde para tostones y más.",
                 features: [
-                    "Plátano maduro fresco",
-                    "Sabor dulce natural",
-                    "Ideal para freír o hervir",
-                    "Textura suave y dorado uniforme",
-                    "Perfecto para platos y acompañamientos tradicionales"
+                    "Textura firme",
+                    "Ideal para freír",
+                    "Versátil"
                 ]
             },
             {
                 id: 10,
-                name: "Maracuyá Fresca",
+                name: "Plátano Maduro",
                 category: "food",
-                price: 2500, // CLP 4.500
-                image: "https://i.pinimg.com/736x/31/1e/4f/311e4f72feac5fdb0dd2a08297c2310a.jpg",
-                tags: ["maracuyá", "fruta tropical", "alimentos", "bebidas", "cocina", "producto fresco"],
-                description: "Fruta tropical de sabor intenso y refrescante, con un equilibrio perfecto entre dulce y ácido. Ideal para preparar jugos, postres, salsas y bebidas naturales.",
+                price: 2500,
+                image: "https://i.pinimg.com/1200x/a2/e2/b2/a2e2b2d7b5c93203728534237a9f1f69.jpg",
+                tags: ["plátano", "maduro"],
+                description: "Plátano maduro dulce para freír.",
                 features: [
-                    "Fruta tropical fresca",
-                    "Sabor dulce y ácido característico",
-                    "Pulpa jugosa y aromática",
-                    "Ideal para jugos, postres y bebidas",
-                    "Versátil para múltiples preparaciones"
+                    "Sabor dulce",
+                    "Ideal para freír",
+                    "Textura suave"
                 ]
             },
             {
                 id: 11,
-                name: "Poroto Negro",
+                name: "Maracuyá Fresca",
                 category: "food",
-                price: 3000, // CLP 6.250
-                image: "https://i.pinimg.com/1200x/c4/d7/90/c4d790907a7a33961bb8d5005bbeaacf.jpg",
-                tags: ["poroto negro", "alimentos", "cocina", "granos", "productos secos"],
-                description: "Poroto negro de alta calidad, ideal para preparar guisos, sopas, ensaladas y platos tradicionales. Destaca por su sabor suave y su textura cremosa una vez cocido.",
+                price: 2500,
+                image: "https://i.pinimg.com/736x/31/1e/4f/311e4f72feac5fdb0dd2a08297c2310a.jpg",
+                tags: ["maracuyá", "fruta"],
+                description: "Fruta tropical de sabor intenso.",
                 features: [
-                    "Textura cremosa al cocinar",
-                    "Sabor suave y agradable",
-                    "Ideal para guisos, sopas y ensaladas",
-                    "Producto básico para cocina diaria"
+                    "Sabor dulce-ácido",
+                    "Ideal para jugos",
+                    "Pulpa aromática"
                 ]
             },
+            {
+                id: 12,
+                name: "Poroto Negro",
+                category: "food",
+                price: 3000,
+                image: "https://i.pinimg.com/1200x/c4/d7/90/c4d790907a7a33961bb8d5005bbeaacf.jpg",
+                tags: ["poroto", "negro", "legumbres"],
+                description: "Poroto negro para guisos.",
+                features: [
+                    "Textura cremosa",
+                    "Ideal para guisos",
+                    "Sabor suave"
+                ]
+            },
+          
+          
+          
+       
             {
                 id: 12,
                 name: "Agua Mineral Cachantún Sin Gas",
@@ -1820,10 +2145,249 @@
 
                 ]
             },
-            
-           
           
-       
+          
+          
+          
+          
+          
+          
+          
+        ];
+
+        // Base de datos de recetas
+        const recipes = [
+            {
+                id: 101,
+                title: "Arepas Colombianas",
+                category: "platos",
+                subcategory: "Colombia",
+                time: "30 min",
+                difficulty: "Fácil",
+                description: "Deliciosas arepas de maíz, perfectas para desayuno o cena",
+                image: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&auto=format",
+                ingredients: [
+                    "2 tazas de harina de maíz precocida",
+                    "2½ tazas de agua tibia",
+                    "1 cucharadita de sal",
+                    "2 cucharadas de aceite"
+                ],
+                steps: [
+                    "Mezcla la harina con la sal",
+                    "Agrega agua tibia poco a poco",
+                    "Amasa 5 minutos y deja reposar",
+                    "Forma discos de 1cm",
+                    "Cocina 5-7 minutos por lado"
+                ]
+            },
+            {
+                id: 102,
+                title: "Ceviche Peruano",
+                category: "platos",
+                subcategory: "Perú",
+                time: "20 min",
+                difficulty: "Media",
+                description: "Fresco ceviche, el plato bandera del Perú",
+                image: "https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=400&auto=format",
+                ingredients: [
+                    "500 g de pescado blanco",
+                    "10 limones",
+                    "1 cebolla roja",
+                    "Ají limo",
+                    "Cilantro"
+                ],
+                steps: [
+                    "Corta el pescado en cubos",
+                    "Corta la cebolla en juliana",
+                    "Mezcla con jugo de limón",
+                    "Deja marinar 5-10 minutos",
+                    "Sirve con camote"
+                ]
+            },
+            {
+                id: 103,
+                title: "Tacos al Pastor",
+                category: "platos",
+                subcategory: "México",
+                time: "45 min",
+                difficulty: "Media",
+                description: "Tacos con adobo y piña",
+                image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=400&auto=format",
+                ingredients: [
+                    "500 g carne de cerdo",
+                    "3 chiles guajillo",
+                    "2 dientes ajo",
+                    "1 piña",
+                    "Cilantro y cebolla"
+                ],
+                steps: [
+                    "Hierve los chiles",
+                    "Licúa con ajo",
+                    "Marina la carne",
+                    "Cocina hasta dorar",
+                    "Sirve con piña"
+                ]
+            },
+            {
+                id: 104,
+                title: "Yuca con Mojo",
+                category: "platos",
+                subcategory: "Cuba/RD",
+                time: "40 min",
+                difficulty: "Fácil",
+                description: "Yuca con salsa mojo criolla",
+                image: "https://images.unsplash.com/photo-1624389709386-b09e0c1df75b?w=400&auto=format",
+                ingredients: [
+                    "1 kg yuca",
+                    "4 dientes ajo",
+                    "1 cebolla morada",
+                    "Jugo de 2 naranjas",
+                    "Cilantro"
+                ],
+                steps: [
+                    "Pela y hierve la yuca",
+                    "Machaca ajos con sal",
+                    "Añade jugo de naranja",
+                    "Sofríe cebolla",
+                    "Baña la yuca con mojo"
+                ]
+            },
+            {
+                id: 105,
+                title: "Patacones",
+                category: "platos",
+                subcategory: "Venezuela/Colombia",
+                time: "25 min",
+                difficulty: "Fácil",
+                description: "Crujientes tostones de plátano verde",
+                image: "https://images.unsplash.com/photo-1585747860715-2ba37c788842?w=400&auto=format",
+                ingredients: [
+                    "2 plátanos verdes",
+                    "Aceite para freír",
+                    "Sal",
+                    "Ajo en polvo"
+                ],
+                steps: [
+                    "Pela y corta los plátanos",
+                    "Fr íe 3-4 minutos",
+                    "Aplasta cada trozo",
+                    "Vuelve a freír",
+                    "Espolvorea con sal"
+                ]
+            },
+            {
+                id: 106,
+                title: "Lentejas Guisadas",
+                category: "platos",
+                subcategory: "Latinoamérica",
+                time: "50 min",
+                difficulty: "Fácil",
+                description: "Lentejas nutritivas y sabrosas",
+                image: "https://images.unsplash.com/photo-1546542312-5c5a7b519c1f?w=400&auto=format",
+                ingredients: [
+                    "500 g lentejas",
+                    "1 cebolla",
+                    "2 zanahorias",
+                    "Comino, laurel"
+                ],
+                steps: [
+                    "Lava las lentejas",
+                    "Sofríe las verduras",
+                    "Agrega lentejas y agua",
+                    "Cocina 30-40 minutos",
+                    "Rectifica sazón"
+                ]
+            },
+            {
+                id: 107,
+                title: "Maracuyá Sour",
+                category: "bebidas",
+                subcategory: "Perú",
+                time: "10 min",
+                difficulty: "Fácil",
+                description: "Refrescante cóctel de maracuyá",
+                image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&auto=format",
+                ingredients: [
+                    "4 maracuyás",
+                    "Jugo de 2 limones",
+                    "4 cdas azúcar",
+                    "Hielo"
+                ],
+                steps: [
+                    "Extrae pulpa de maracuyá",
+                    "Licúa con agua y cuela",
+                    "Mezcla con limón y azúcar",
+                    "Sirve con hielo"
+                ]
+            },
+            {
+                id: 108,
+                title: "Chicha de Yuca",
+                category: "bebidas",
+                subcategory: "Colombia",
+                time: "1h + fermentación",
+                difficulty: "Media",
+                description: "Bebida fermentada de yuca",
+                image: "https://images.unsplash.com/photo-1551024700-54f8cc41ca8e?w=400&auto=format",
+                ingredients: [
+                    "500 g yuca",
+                    "200 g panela",
+                    "Canela",
+                    "Clavos de olor"
+                ],
+                steps: [
+                    "Cocina yuca hasta blanda",
+                    "Haz puré",
+                    "Mezcla con panela",
+                    "Fermenta 2-3 días",
+                    "Sirve fría"
+                ]
+            },
+            {
+                id: 109,
+                title: "Limonada de Coco",
+                category: "bebidas",
+                subcategory: "Colombia",
+                time: "15 min",
+                difficulty: "Fácil",
+                description: "Limonada cremosa con coco",
+                image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&auto=format",
+                ingredients: [
+                    "4 limones",
+                    "200 ml leche coco",
+                    "4 cdas azúcar",
+                    "Menta"
+                ],
+                steps: [
+                    "Exprime los limones",
+                    "Licúa con leche coco",
+                    "Añade azúcar y hielo",
+                    "Sirve con menta"
+                ]
+            },
+            {
+                id: 110,
+                title: "Flan de Maracuyá",
+                category: "postres",
+                subcategory: "Latinoamérica",
+                time: "1h",
+                difficulty: "Media",
+                description: "Flan cremoso con toque ácido",
+                image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&auto=format",
+                ingredients: [
+                    "1 lata leche condensada",
+                    "1 lata leche evaporada",
+                    "4 huevos",
+                    "4 maracuyás"
+                ],
+                steps: [
+                    "Prepara caramelo",
+                    "Licúa ingredientes",
+                    "Vierte en flanera",
+                    "Baño María 45 min",
+                    "Enfría y desmolda"
+                ]
+            }
         ];
 
         // Variables globales
@@ -1833,7 +2397,7 @@
         let searchTimeout = null;
         let shippingData = null;
         const phoneNumber = "+56955174362";
-        const MINIMUM_PURCHASE = 15000; // Mínimo de compra: 15.000 pesos chilenos
+        const MINIMUM_PURCHASE = 15000;
         
         // Elementos DOM
         const productsGrid = document.getElementById('products-grid');
@@ -1851,9 +2415,6 @@
         const homeBtn = document.getElementById('home-btn');
         const historySidebar = document.getElementById('history-sidebar');
         const closeHistoryBtn = document.getElementById('close-history');
-        const historyItems = document.getElementById('history-items');
-        const emptyCartMessage = document.getElementById('empty-cart-message');
-        const emptyHistoryMessage = document.getElementById('empty-history-message');
         const searchInput = document.getElementById('search-input');
         const suggestionsContainer = document.getElementById('suggestions-container');
         const productDetailModal = document.getElementById('product-detail-modal');
@@ -1871,10 +2432,30 @@
         const savedPhone = document.getElementById('saved-phone');
         const savedAddress = document.getElementById('saved-address');
         const minimumPurchaseNotice = document.getElementById('minimum-purchase-notice');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const emptyHistoryMessage = document.getElementById('empty-history-message');
         
+        // Elementos de recetas
+        const recipesSidebar = document.getElementById('recipes-sidebar');
+        const closeRecipesBtn = document.getElementById('close-recipes');
+        const recipesFooterBtn = document.getElementById('recipes-footer-btn');
+        const recipesGridSmall = document.getElementById('recipes-grid-small');
+        const recipesSearch = document.getElementById('recipes-search-input');
+        const recipesFilterBtns = document.querySelectorAll('.recipes-filter-btn');
+
         // Función para formatear precio en CLP
         function formatPrice(price) {
             return `CLP ${price.toLocaleString('es-CL')}`;
+        }
+
+        // Función para obtener nombre de categoría
+        function getCategoryName(categoryCode) {
+            const categories = {
+                "electronics": "Electrónico",
+                "food": "Comestible",
+                "cleaning": "Limpieza"
+            };
+            return categories[categoryCode] || "General";
         }
 
         // Inicializar la tienda
@@ -1884,12 +2465,11 @@
             loadCartFromStorage();
             loadPurchaseHistory();
             loadShippingData();
+            renderRecipes();
             updateEditButtonVisibility();
-            
-            // Mostrar aviso de mínimo de compra si el total es menor
             checkMinimumPurchase();
         }
-        
+
         // Renderizar productos
         function renderProducts(filteredProducts = null) {
             productsGrid.innerHTML = '';
@@ -1905,7 +2485,7 @@
             }
             
             if (productsToRender.length === 0) {
-                productsGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: var(--gray);">No se encontraron productos</p>';
+                productsGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.6);">No se encontraron productos</p>';
                 return;
             }
             
@@ -1915,7 +2495,7 @@
                 productCard.innerHTML = `
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
-                        <div class="product-category">${getCategoryName(product.category)}</div>
+                        <div class="product-category"><i class="fas ${product.category === 'electronics' ? 'fa-microchip' : product.category === 'food' ? 'fa-utensil-spoon' : 'fa-broom'}"></i> ${getCategoryName(product.category)}</div>
                         <h3 class="product-name">${product.name}</h3>
                         <div class="product-price">${formatPrice(product.price)}</div>
                         <button class="add-to-cart" data-id="${product.id}">
@@ -1942,33 +2522,20 @@
                 });
             });
         }
-        
-        // Obtener nombre de categoría para mostrar
-        function getCategoryName(categoryCode) {
-            const categories = {
-                "electronics": "Electrónico",
-                "food": "Comestible",
-                "cleaning": "Limpieza"
-            };
-            return categories[categoryCode] || "General";
-        }
-        
+
         // Abrir vista de detalle del producto
         function openProductDetail(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
-            closeCart();
-            closeHistory();
-            closeShippingForm();
-            
+            closeAllPanels();
             overlay.classList.add('active');
             
             let featuresHTML = '';
             if (product.features && product.features.length > 0) {
                 featuresHTML = `
                     <div class="detail-features">
-                        <h4>Características principales:</h4>
+                        <h4><i class="fas fa-star"></i> Características principales:</h4>
                         <ul class="features-list">
                             ${product.features.map(feature => `<li>${feature}</li>`).join('')}
                         </ul>
@@ -1978,7 +2545,7 @@
             
             detailContent.innerHTML = `
                 <img src="${product.image}" alt="${product.name}" class="detail-image">
-                <div class="detail-category">${getCategoryName(product.category)}</div>
+                <div class="detail-category"><i class="fas ${product.category === 'electronics' ? 'fa-microchip' : product.category === 'food' ? 'fa-utensil-spoon' : 'fa-broom'}"></i> ${getCategoryName(product.category)}</div>
                 <h1 class="detail-name">${product.name}</h1>
                 <div class="detail-price">${formatPrice(product.price)}</div>
                 <div class="detail-description">
@@ -2012,85 +2579,77 @@
                 showNotification(`${product.name} añadido al carrito`);
             });
         }
-        
-        // Cerrar vista de detalle del producto
+
+        // Cerrar vista de detalle
         function closeProductDetail() {
             productDetailModal.classList.remove('active');
-            overlay.classList.remove('active');
+            if (!cartSidebar.classList.contains('active') && 
+                !shippingFormModal.classList.contains('active') &&
+                !historySidebar.classList.contains('active') &&
+                !recipesSidebar.classList.contains('active')) {
+                overlay.classList.remove('active');
+            }
         }
-        
+
         // Abrir formulario de envío
         function openShippingForm() {
             if (cart.length === 0) {
-                alert('Tu carrito está vacío. Añade productos antes de proceder al envío.');
+                alert('Tu carrito está vacío');
                 return;
             }
             
-            // Verificar mínimo de compra
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             if (totalPrice < MINIMUM_PURCHASE) {
-                alert(`El monto mínimo de compra es ${formatPrice(MINIMUM_PURCHASE)}. Tu pedido actual es de ${formatPrice(totalPrice)}.\n\nPor favor añade más productos para alcanzar el mínimo requerido.`);
+                alert(`El monto mínimo de compra es ${formatPrice(MINIMUM_PURCHASE)}.`);
                 return;
             }
             
-            closeCart();
-            closeHistory();
-            closeProductDetail();
-            
+            closeAllPanels();
             overlay.classList.add('active');
             
             updateOrderSummary();
             
             if (shippingData) {
-                showSavedShippingInfo();
-            } else {
-                hideSavedShippingInfo();
-            }
-            
-            shippingFormModal.classList.add('active');
-        }
-        
-        // Cerrar formulario de envío
-        function closeShippingForm() {
-            shippingFormModal.classList.remove('active');
-            overlay.classList.remove('active');
-            
-            clearFormErrors();
-        }
-        
-        // Mostrar información de envío guardada
-        function showSavedShippingInfo() {
-            if (shippingData) {
                 savedFullName.textContent = shippingData.fullName;
                 savedPhone.textContent = shippingData.phone;
                 savedAddress.textContent = shippingData.address;
                 savedShippingInfo.style.display = 'block';
+            } else {
+                savedShippingInfo.style.display = 'none';
             }
+            
+            shippingFormModal.classList.add('active');
         }
-        
-        // Ocultar información de envío guardada
-        function hideSavedShippingInfo() {
+
+        // Cerrar formulario de envío
+        function closeShippingForm() {
+            shippingFormModal.classList.remove('active');
+            if (!cartSidebar.classList.contains('active') && 
+                !productDetailModal.classList.contains('active') &&
+                !historySidebar.classList.contains('active') &&
+                !recipesSidebar.classList.contains('active')) {
+                overlay.classList.remove('active');
+            }
+            clearFormErrors();
+        }
+
+        // Abrir formulario para editar datos
+        function openEditShippingForm() {
+            if (shippingData) {
+                document.getElementById('full-name').value = shippingData.fullName || '';
+                document.getElementById('phone').value = shippingData.phone || '';
+                document.getElementById('email').value = shippingData.email || '';
+                document.getElementById('address').value = shippingData.address || '';
+                document.getElementById('city').value = shippingData.city || '';
+                document.getElementById('postal-code').value = shippingData.postalCode || '';
+                document.getElementById('instructions').value = shippingData.instructions || '';
+            }
+            
             savedShippingInfo.style.display = 'none';
+            openShippingForm();
         }
-        
-        // Usar datos de envío guardados
-        function useSavedShippingData() {
-            if (!shippingData) return;
-            
-            document.getElementById('full-name').value = shippingData.fullName;
-            document.getElementById('phone').value = shippingData.phone;
-            document.getElementById('email').value = shippingData.email;
-            document.getElementById('address').value = shippingData.address;
-            document.getElementById('city').value = shippingData.city;
-            document.getElementById('postal-code').value = shippingData.postalCode;
-            document.getElementById('instructions').value = shippingData.instructions;
-            
-            hideSavedShippingInfo();
-            
-            showNotification('Datos de envío cargados correctamente');
-        }
-        
-        // Actualizar resumen del pedido en el formulario
+
+        // Actualizar resumen del pedido
         function updateOrderSummary() {
             let summaryHTML = '<h3>Resumen de tu Pedido</h3>';
             
@@ -2114,7 +2673,7 @@
             
             orderSummary.innerHTML = summaryHTML;
         }
-        
+
         // Validar formulario
         function validateForm() {
             let isValid = true;
@@ -2127,68 +2686,75 @@
             clearFormErrors();
             
             if (fullName.length < 3) {
-                showFormError('name-error', 'Por favor ingresa tu nombre completo');
+                showFormError('name-error');
+                document.getElementById('full-name').classList.add('error');
                 isValid = false;
             }
             
             const phoneRegex = /^(\+56\s?9\s?[0-9]{4}\s?[0-9]{4}|9\s?[0-9]{4}\s?[0-9]{4}|[0-9]{9})$/;
             if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
-                showFormError('phone-error', 'Por favor ingresa un número de teléfono válido (ej: +56 9 1234 5678)');
+                showFormError('phone-error');
+                document.getElementById('phone').classList.add('error');
                 isValid = false;
             }
             
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                showFormError('email-error', 'Por favor ingresa un correo electrónico válido');
+                showFormError('email-error');
+                document.getElementById('email').classList.add('error');
                 isValid = false;
             }
             
             if (address.length < 10) {
-                showFormError('address-error', 'Por favor ingresa una dirección completa');
+                showFormError('address-error');
+                document.getElementById('address').classList.add('error');
                 isValid = false;
             }
             
             return isValid;
         }
-        
-        // Mostrar error en formulario
-        function showFormError(errorId, message) {
+
+        function showFormError(errorId) {
             const errorElement = document.getElementById(errorId);
-            const inputElement = document.getElementById(errorId.replace('-error', ''));
-            
-            errorElement.textContent = message;
             errorElement.classList.add('active');
-            inputElement.classList.add('error');
         }
-        
-        // Limpiar errores del formulario
+
         function clearFormErrors() {
             document.querySelectorAll('.error-message').forEach(el => {
                 el.classList.remove('active');
             });
-            
             document.querySelectorAll('.form-input').forEach(el => {
                 el.classList.remove('error');
             });
         }
-        
-        // Enviar pedido por WhatsApp con datos de envío
-        function sendOrderWithShipping() {
-            if (cart.length === 0) {
-                alert('Tu carrito está vacío.');
-                return;
-            }
+
+        // Usar datos guardados
+        function useSavedShippingData() {
+            if (!shippingData) return;
             
-            // Verificar mínimo de compra
+            document.getElementById('full-name').value = shippingData.fullName;
+            document.getElementById('phone').value = shippingData.phone;
+            document.getElementById('email').value = shippingData.email;
+            document.getElementById('address').value = shippingData.address;
+            document.getElementById('city').value = shippingData.city;
+            document.getElementById('postal-code').value = shippingData.postalCode;
+            document.getElementById('instructions').value = shippingData.instructions;
+            
+            savedShippingInfo.style.display = 'none';
+            showNotification('Datos cargados');
+        }
+
+        // Enviar pedido por WhatsApp
+        function sendOrderWithShipping() {
+            if (cart.length === 0) return;
+            
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             if (totalPrice < MINIMUM_PURCHASE) {
-                alert(`El monto mínimo de compra es ${formatPrice(MINIMUM_PURCHASE)}. Tu pedido actual es de ${formatPrice(totalPrice)}.\n\nPor favor añade más productos para alcanzar el mínimo requerido.`);
+                alert(`Mínimo ${formatPrice(MINIMUM_PURCHASE)}`);
                 return;
             }
             
-            if (!validateForm()) {
-                return;
-            }
+            if (!validateForm()) return;
             
             const fullName = document.getElementById('full-name').value.trim();
             const phone = document.getElementById('phone').value.trim();
@@ -2198,169 +2764,51 @@
             const postalCode = document.getElementById('postal-code').value.trim();
             const instructions = document.getElementById('instructions').value.trim();
             
-            saveShippingData({
-                fullName,
-                phone,
-                email,
-                address,
-                city,
-                postalCode,
-                instructions
-            });
+            shippingData = { fullName, phone, email, address, city, postalCode, instructions };
+            localStorage.setItem('shippingData', JSON.stringify(shippingData));
             
             let message = "¡Hola! Quiero hacer el siguiente pedido:\n\n";
-            
-            message += "*DETALLES DEL PEDIDO:*\n";
+            message += "*DETALLES:*\n";
             cart.forEach(item => {
                 message += `• ${item.name} x${item.quantity} - ${formatPrice(item.price * item.quantity)}\n`;
             });
-            
-            const totalPrice2 = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            message += `\n*Total: ${formatPrice(totalPrice2)}*\n\n`;
-            
-            message += "*DATOS DEL CLIENTE:*\n";
+            message += `\n*Total: ${formatPrice(totalPrice)}*\n\n`;
+            message += "*CLIENTE:*\n";
             message += `Nombre: ${fullName}\n`;
             message += `Teléfono: ${phone}\n`;
             message += `Email: ${email}\n\n`;
-            
-            message += "*DIRECCIÓN DE ENVÍO:*\n";
+            message += "*DIRECCIÓN:*\n";
             message += `${address}\n`;
             if (city) message += `Ciudad: ${city}\n`;
             if (postalCode) message += `Código Postal: ${postalCode}\n`;
             if (instructions) message += `Instrucciones: ${instructions}\n`;
             
-            message += `\nPor favor, confirmen mi pedido y la dirección de entrega.`;
+            const whatsappURL = `https://wa.me/${phoneNumber.replace('+', '')}?text=${encodeURIComponent(message)}`;
             
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappURL = `https://wa.me/${phoneNumber.replace('+', '')}?text=${encodedMessage}`;
+            const purchase = {
+                id: Date.now(),
+                date: new Date().toLocaleString(),
+                items: [...cart],
+                total: totalPrice,
+                customerName: fullName,
+                address: address,
+                phone: phone
+            };
             
-            saveToPurchaseHistory(fullName, address, phone);
+            purchaseHistory.unshift(purchase);
+            localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
             
             window.open(whatsappURL, '_blank');
             
             cart = [];
             updateCart();
             closeShippingForm();
-            
-            showNotification('Pedido enviado por WhatsApp y datos de envío guardados');
-            
+            showNotification('Pedido enviado');
             updateEditButtonVisibility();
-            checkMinimumPurchase();
+            renderPurchaseHistory();
         }
-        
-        // Guardar datos de envío
-        function saveShippingData(data) {
-            shippingData = data;
-            localStorage.setItem('shippingData', JSON.stringify(shippingData));
-        }
-        
-        // Cargar datos de envío guardados
-        function loadShippingData() {
-            const savedData = localStorage.getItem('shippingData');
-            if (savedData) {
-                shippingData = JSON.parse(savedData);
-            }
-        }
-        
-        // Actualizar visibilidad del botón editar
-        function updateEditButtonVisibility() {
-            if (shippingData) {
-                editShippingBtn.style.display = 'flex';
-            } else {
-                editShippingBtn.style.display = 'none';
-            }
-        }
-        
-        // Abrir formulario para editar datos de envío
-        function openEditShippingForm() {
-            if (shippingData) {
-                document.getElementById('full-name').value = shippingData.fullName || '';
-                document.getElementById('phone').value = shippingData.phone || '';
-                document.getElementById('email').value = shippingData.email || '';
-                document.getElementById('address').value = shippingData.address || '';
-                document.getElementById('city').value = shippingData.city || '';
-                document.getElementById('postal-code').value = shippingData.postalCode || '';
-                document.getElementById('instructions').value = shippingData.instructions || '';
-            }
-            
-            hideSavedShippingInfo();
-            
-            openShippingForm();
-        }
-        
-        // Verificar mínimo de compra y mostrar/ocultar aviso
-        function checkMinimumPurchase() {
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            if (cart.length > 0 && totalPrice < MINIMUM_PURCHASE) {
-                minimumPurchaseNotice.classList.add('visible');
-                const remaining = MINIMUM_PURCHASE - totalPrice;
-                minimumPurchaseNotice.innerHTML = `<i class="fas fa-info-circle"></i> Compra mínima: ${formatPrice(MINIMUM_PURCHASE)}. Te faltan ${formatPrice(remaining)} para completar el pedido.`;
-            } else {
-                minimumPurchaseNotice.classList.remove('visible');
-            }
-        }
-        
-        // Buscar productos
-        function searchProducts(searchTerm) {
-            if (!searchTerm.trim()) {
-                renderProducts();
-                suggestionsContainer.classList.remove('active');
-                return;
-            }
-            
-            const term = searchTerm.toLowerCase();
-            
-            const filteredProducts = products.filter(product => {
-                if (product.name.toLowerCase().includes(term)) return true;
-                
-                if (product.category.includes(term)) return true;
-                
-                if (product.tags && product.tags.some(tag => tag.includes(term))) return true;
-                
-                return false;
-            });
-            
-            renderProducts(filteredProducts);
-            
-            if (filteredProducts.length > 0 && searchTerm.length > 0) {
-                showSuggestions(filteredProducts, searchTerm);
-            } else {
-                suggestionsContainer.classList.remove('active');
-            }
-        }
-        
-        // Mostrar sugerencias de búsqueda
-        function showSuggestions(filteredProducts, searchTerm) {
-            suggestionsContainer.innerHTML = '';
-            
-            const suggestions = filteredProducts.slice(0, 5);
-            
-            suggestions.forEach(product => {
-                const suggestionItem = document.createElement('div');
-                suggestionItem.className = 'suggestion-item';
-                suggestionItem.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}" class="suggestion-image">
-                    <div class="suggestion-info">
-                        <div class="suggestion-name">${product.name}</div>
-                        <div class="suggestion-price">${formatPrice(product.price)}</div>
-                    </div>
-                    <div class="suggestion-category">${getCategoryName(product.category)}</div>
-                `;
-                
-                suggestionItem.addEventListener('click', () => {
-                    searchInput.value = product.name;
-                    searchProducts(product.name);
-                    suggestionsContainer.classList.remove('active');
-                });
-                
-                suggestionsContainer.appendChild(suggestionItem);
-            });
-            
-            suggestionsContainer.classList.add('active');
-        }
-        
-        // Añadir producto al carrito
+
+        // Añadir al carrito
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
@@ -2370,15 +2818,13 @@
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({
-                    ...product,
-                    quantity: 1
-                });
+                cart.push({ ...product, quantity: 1 });
             }
             
             updateCart();
+            showNotification(`${product.name} añadido`);
         }
-        
+
         // Actualizar carrito
         function updateCart() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -2391,11 +2837,11 @@
             
             checkoutBtn.disabled = cart.length === 0;
             
-            saveCartToStorage();
+            localStorage.setItem('cart', JSON.stringify(cart));
             checkMinimumPurchase();
         }
-        
-        // Renderizar productos en el carrito
+
+        // Renderizar carrito
         function renderCartItems() {
             cartItems.innerHTML = '';
             
@@ -2410,7 +2856,7 @@
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <img src="${item.image}" class="cart-item-image">
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
                         <div class="cart-item-price">${formatPrice(item.price)}</div>
@@ -2418,80 +2864,331 @@
                             <button class="quantity-btn decrease" data-id="${item.id}">-</button>
                             <span class="quantity">${item.quantity}</span>
                             <button class="quantity-btn increase" data-id="${item.id}">+</button>
-                            <button class="remove-item" data-id="${item.id}">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                            <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 `;
                 cartItems.appendChild(cartItem);
             });
             
-            document.querySelectorAll('.decrease').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.currentTarget.getAttribute('data-id'));
-                    updateQuantity(productId, -1);
+            document.querySelectorAll('.decrease').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.dataset.id);
+                    const item = cart.find(i => i.id === id);
+                    if (item.quantity > 1) {
+                        item.quantity--;
+                        updateCart();
+                    }
                 });
             });
             
-            document.querySelectorAll('.increase').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.currentTarget.getAttribute('data-id'));
-                    updateQuantity(productId, 1);
+            document.querySelectorAll('.increase').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.dataset.id);
+                    const item = cart.find(i => i.id === id);
+                    item.quantity++;
+                    updateCart();
                 });
             });
             
-            document.querySelectorAll('.remove-item').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.currentTarget.getAttribute('data-id'));
-                    removeFromCart(productId);
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.dataset.id);
+                    cart = cart.filter(i => i.id !== id);
+                    updateCart();
                 });
             });
         }
-        
-        // Actualizar cantidad de un producto
-        function updateQuantity(productId, change) {
-            const item = cart.find(item => item.id === productId);
-            if (!item) return;
-            
-            item.quantity += change;
-            
-            if (item.quantity <= 0) {
-                cart = cart.filter(item => item.id !== productId);
+
+        // Verificar mínimo de compra
+        function checkMinimumPurchase() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            if (cart.length > 0 && total < MINIMUM_PURCHASE) {
+                const remaining = MINIMUM_PURCHASE - total;
+                minimumPurchaseNotice.innerHTML = `<i class="fas fa-info-circle"></i> Te faltan ${formatPrice(remaining)} para el mínimo`;
+                minimumPurchaseNotice.classList.add('visible');
+            } else {
+                minimumPurchaseNotice.classList.remove('visible');
+            }
+        }
+
+        // Búsqueda de productos
+        function searchProducts(term) {
+            if (!term.trim()) {
+                renderProducts();
+                suggestionsContainer.classList.remove('active');
+                return;
             }
             
-            updateCart();
+            const t = term.toLowerCase();
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(t) ||
+                (p.tags && p.tags.some(tag => tag.includes(t)))
+            );
+            
+            renderProducts(filtered);
+            
+            if (filtered.length > 0) {
+                suggestionsContainer.innerHTML = filtered.slice(0, 5).map(p => `
+                    <div class="suggestion-item" data-id="${p.id}">
+                        <img src="${p.image}" class="suggestion-image">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">${p.name}</div>
+                            <div class="suggestion-price">${formatPrice(p.price)}</div>
+                        </div>
+                        <div class="suggestion-category">${getCategoryName(p.category)}</div>
+                    </div>
+                `).join('');
+                
+                suggestionsContainer.classList.add('active');
+                
+                document.querySelectorAll('.suggestion-item').forEach(el => {
+                    el.addEventListener('click', () => {
+                        const id = parseInt(el.dataset.id);
+                        openProductDetail(id);
+                        suggestionsContainer.classList.remove('active');
+                    });
+                });
+            } else {
+                suggestionsContainer.classList.remove('active');
+            }
         }
-        
-        // Eliminar producto del carrito
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCart();
+
+        // Renderizar recetas en el panel
+        function renderRecipes(filtered = null) {
+            let recipesToShow = filtered || recipes;
+            
+            if (recipesToShow.length === 0) {
+                recipesGridSmall.innerHTML = '<p style="color: rgba(255,255,255,0.6); text-align: center;">No hay recetas</p>';
+                return;
+            }
+            
+            recipesGridSmall.innerHTML = recipesToShow.map(r => `
+                <div class="recipe-mini-card" data-id="${r.id}">
+                    <img src="${r.image}" class="recipe-mini-image">
+                    <div class="recipe-mini-info">
+                        <div class="recipe-mini-title">${r.title}</div>
+                        <div class="recipe-mini-meta">
+                            <span><i class="far fa-clock"></i> ${r.time}</span>
+                            <span><i class="fas fa-utensils"></i> ${r.subcategory}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.querySelectorAll('.recipe-mini-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = parseInt(card.dataset.id);
+                    const recipe = recipes.find(r => r.id === id);
+                    showRecipeDetail(recipe);
+                    closeRecipes();
+                });
+            });
         }
-        
+
+        // Mostrar detalle de receta
+        function showRecipeDetail(recipe) {
+            // Reutilizamos el modal de detalle de producto pero para recetas
+            detailContent.innerHTML = `
+                <img src="${recipe.image}" class="detail-image">
+                <div class="detail-category"><i class="fas ${recipe.category === 'bebidas' ? 'fa-cocktail' : recipe.category === 'postres' ? 'fa-cake' : 'fa-utensil-spoon'}"></i> ${recipe.subcategory}</div>
+                <h1 class="detail-name">${recipe.title}</h1>
+                <div style="display: flex; gap: 15px; margin-bottom: 20px; color: #ff9f1c;">
+                    <span><i class="far fa-clock"></i> ${recipe.time}</span>
+                    <span><i class="fas fa-signal"></i> ${recipe.difficulty}</span>
+                </div>
+                <div class="detail-features" style="background: rgba(255,255,255,0.05);">
+                    <h4><i class="fas fa-shopping-basket"></i> Ingredientes:</h4>
+                    <ul class="features-list">
+                        ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+                    </ul>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="margin-bottom: 15px; color: white;"><i class="fas fa-list-ol"></i> Preparación:</h4>
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        ${recipe.steps.map((step, i) => `
+                            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; border-left: 3px solid #ff9f1c;">
+                                <strong style="color: #ff9f1c;">Paso ${i+1}:</strong> ${step}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('detail-title').textContent = recipe.title;
+            productDetailModal.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        // Cargar datos guardados
+        function loadCartFromStorage() {
+            const saved = localStorage.getItem('cart');
+            if (saved) {
+                cart = JSON.parse(saved);
+                updateCart();
+            }
+        }
+
+        function loadPurchaseHistory() {
+            const saved = localStorage.getItem('purchaseHistory');
+            if (saved) {
+                purchaseHistory = JSON.parse(saved);
+                renderPurchaseHistory();
+            }
+        }
+
+        function loadShippingData() {
+            const saved = localStorage.getItem('shippingData');
+            if (saved) {
+                shippingData = JSON.parse(saved);
+            }
+        }
+
+        // Renderizar historial
+        function renderPurchaseHistory() {
+            const historyItems = document.getElementById('history-items');
+            if (purchaseHistory.length === 0) {
+                emptyHistoryMessage.style.display = 'block';
+                return;
+            }
+            
+            emptyHistoryMessage.style.display = 'none';
+            
+            historyItems.innerHTML = purchaseHistory.map(p => `
+                <div class="history-item">
+                    <div class="history-date">
+                        <span>#${p.id.toString().slice(-4)}</span>
+                        <span>${p.date}</span>
+                    </div>
+                    <div class="history-products">
+                        ${p.items.map(i => `
+                            <div class="history-product">
+                                <span>${i.name} x${i.quantity}</span>
+                                <span>${formatPrice(i.price * i.quantity)}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="history-total">
+                        <span>Total:</span>
+                        <span>${formatPrice(p.total)}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Actualizar visibilidad botón editar
+        function updateEditButtonVisibility() {
+            editShippingBtn.style.display = shippingData ? 'flex' : 'none';
+        }
+
+        // Mostrar notificación
+        function showNotification(msg) {
+            const notif = document.createElement('div');
+            notif.className = 'notification';
+            notif.textContent = msg;
+            document.body.appendChild(notif);
+            setTimeout(() => {
+                notif.style.opacity = '0';
+                setTimeout(() => document.body.removeChild(notif), 300);
+            }, 2000);
+        }
+
+        // Funciones de paneles
+        function openCart() {
+            closeAllPanels();
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function closeCart() {
+            cartSidebar.classList.remove('active');
+            if (!productDetailModal.classList.contains('active') && 
+                !shippingFormModal.classList.contains('active') &&
+                !historySidebar.classList.contains('active') &&
+                !recipesSidebar.classList.contains('active')) {
+                overlay.classList.remove('active');
+            }
+        }
+
+        function openHistory() {
+            closeAllPanels();
+            historySidebar.classList.add('active');
+            overlay.classList.add('active');
+            setActiveFooterButton(historyBtn);
+            renderPurchaseHistory();
+        }
+
+        function closeHistory() {
+            historySidebar.classList.remove('active');
+            if (!productDetailModal.classList.contains('active') && 
+                !shippingFormModal.classList.contains('active') &&
+                !cartSidebar.classList.contains('active') &&
+                !recipesSidebar.classList.contains('active')) {
+                overlay.classList.remove('active');
+            }
+        }
+
+        function openRecipes() {
+            closeAllPanels();
+            recipesSidebar.classList.add('active');
+            overlay.classList.add('active');
+            setActiveFooterButton(recipesFooterBtn);
+        }
+
+        function closeRecipes() {
+            recipesSidebar.classList.remove('active');
+            if (!productDetailModal.classList.contains('active') && 
+                !shippingFormModal.classList.contains('active') &&
+                !cartSidebar.classList.contains('active') &&
+                !historySidebar.classList.contains('active')) {
+                overlay.classList.remove('active');
+            }
+        }
+
+        function closeAllPanels() {
+            cartSidebar.classList.remove('active');
+            historySidebar.classList.remove('active');
+            recipesSidebar.classList.remove('active');
+            productDetailModal.classList.remove('active');
+            shippingFormModal.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        function setActiveFooterButton(btn) {
+            document.querySelectorAll('.footer-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
         // Configurar event listeners
         function setupEventListeners() {
             openCartBtn.addEventListener('click', openCart);
             closeCartBtn.addEventListener('click', closeCart);
-            overlay.addEventListener('click', closeAllPanels);
-            
-            checkoutBtn.addEventListener('click', openShippingForm);
-            
-            editShippingBtn.addEventListener('click', openEditShippingForm);
             
             historyBtn.addEventListener('click', openHistory);
             closeHistoryBtn.addEventListener('click', closeHistory);
+            
+            recipesFooterBtn.addEventListener('click', openRecipes);
+            closeRecipesBtn.addEventListener('click', closeRecipes);
             
             homeBtn.addEventListener('click', () => {
                 closeAllPanels();
                 searchInput.value = '';
                 currentCategory = "all";
-                document.querySelector('.category-btn[data-category="all"]').click();
+                document.querySelector('.category-btn[data-category="all"]').classList.add('active');
+                document.querySelector('.category-btn[data-category="electronics"]').classList.remove('active');
+                document.querySelector('.category-btn[data-category="food"]').classList.remove('active');
+                document.querySelector('.category-btn[data-category="cleaning"]').classList.remove('active');
+                renderProducts();
                 setActiveFooterButton(homeBtn);
             });
             
-            closeDetailBtn.addEventListener('click', closeProductDetail);
+            overlay.addEventListener('click', closeAllPanels);
             
+            // IMPORTANTE: Eventos de envío y edición
+            checkoutBtn.addEventListener('click', openShippingForm);
+            editShippingBtn.addEventListener('click', openEditShippingForm);
+            
+            closeDetailBtn.addEventListener('click', closeProductDetail);
             closeShippingBtn.addEventListener('click', closeShippingForm);
             backToCartBtn.addEventListener('click', () => {
                 closeShippingForm();
@@ -2506,13 +3203,8 @@
             });
             
             searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value;
-                
                 clearTimeout(searchTimeout);
-                
-                searchTimeout = setTimeout(() => {
-                    searchProducts(searchTerm);
-                }, 300);
+                searchTimeout = setTimeout(() => searchProducts(e.target.value), 300);
             });
             
             document.addEventListener('click', (e) => {
@@ -2521,179 +3213,41 @@
                 }
             });
             
-            categoryBtns.forEach(button => {
-                button.addEventListener('click', () => {
-                    categoryBtns.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    currentCategory = button.getAttribute('data-category');
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.dataset.category;
                     searchInput.value = '';
                     renderProducts();
-                    suggestionsContainer.classList.remove('active');
+                });
+            });
+            
+            // Eventos de recetas
+            recipesSearch.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = recipes.filter(r => 
+                    r.title.toLowerCase().includes(term) ||
+                    r.ingredients.some(i => i.toLowerCase().includes(term))
+                );
+                renderRecipes(filtered);
+            });
+            
+            recipesFilterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    recipesFilterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.dataset.filter;
+                    if (filter === 'all') {
+                        renderRecipes(recipes);
+                    } else {
+                        renderRecipes(recipes.filter(r => r.category === filter));
+                    }
                 });
             });
         }
-        
-        // Abrir carrito
-        function openCart() {
-            closeHistory();
-            closeProductDetail();
-            closeShippingForm();
-            cartSidebar.classList.add('active');
-            overlay.classList.add('active');
-        }
-        
-        // Cerrar carrito
-        function closeCart() {
-            cartSidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-        
-        // Abrir historial
-        function openHistory() {
-            closeCart();
-            closeProductDetail();
-            closeShippingForm();
-            historySidebar.classList.add('active');
-            overlay.classList.add('active');
-            setActiveFooterButton(historyBtn);
-        }
-        
-        // Cerrar historial
-        function closeHistory() {
-            historySidebar.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-        
-        // Cerrar todos los paneles
-        function closeAllPanels() {
-            closeCart();
-            closeHistory();
-            closeProductDetail();
-            closeShippingForm();
-        }
-        
-        // Establecer botón activo en el footer
-        function setActiveFooterButton(activeButton) {
-            document.querySelectorAll('.footer-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            activeButton.classList.add('active');
-        }
-        
-        // Guardar compra en historial con datos de envío
-        function saveToPurchaseHistory(customerName, address, phone) {
-            if (cart.length === 0) return;
-            
-            const purchase = {
-                id: Date.now(),
-                date: new Date().toLocaleString('es-ES'),
-                items: [...cart],
-                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-                customerName: customerName,
-                address: address,
-                phone: phone
-            };
-            
-            purchaseHistory.unshift(purchase);
-            if (purchaseHistory.length > 10) {
-                purchaseHistory = purchaseHistory.slice(0, 10);
-            }
-            
-            savePurchaseHistoryToStorage();
-            renderPurchaseHistory();
-        }
-        
-        // Renderizar historial de compras
-        function renderPurchaseHistory() {
-            historyItems.innerHTML = '';
-            
-            if (purchaseHistory.length === 0) {
-                emptyHistoryMessage.style.display = 'block';
-                return;
-            }
-            
-            emptyHistoryMessage.style.display = 'none';
-            
-            purchaseHistory.forEach(purchase => {
-                const historyItem = document.createElement('div');
-                historyItem.className = 'history-item';
-                
-                let productsHTML = '';
-                purchase.items.forEach(item => {
-                    productsHTML += `
-                        <div class="history-product">
-                            <span>${item.name} x${item.quantity}</span>
-                            <span>${formatPrice(item.price * item.quantity)}</span>
-                        </div>
-                    `;
-                });
-                
-                historyItem.innerHTML = `
-                    <div class="history-date">
-                        <span>Pedido #${purchase.id.toString().slice(-4)}</span>
-                        <span>${purchase.date}</span>
-                    </div>
-                    <div class="history-products">
-                        ${productsHTML}
-                    </div>
-                    <div class="history-total">
-                        <span>Total:</span>
-                        <span>${formatPrice(purchase.total)}</span>
-                    </div>
-                    <div style="margin-top: 10px; font-size: 0.85rem; color: var(--gray);">
-                        <div><strong>Cliente:</strong> ${purchase.customerName || 'No registrado'}</div>
-                        <div><strong>Dirección:</strong> ${purchase.address || 'No registrada'}</div>
-                    </div>
-                `;
-                
-                historyItems.appendChild(historyItem);
-            });
-        }
-        
-        // Mostrar notificación
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-        
-        // Guardar carrito en localStorage
-        function saveCartToStorage() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-        
-        // Cargar carrito desde localStorage
-        function loadCartFromStorage() {
-            const savedCart = localStorage.getItem('cart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCart();
-            }
-        }
-        
-        // Guardar historial en localStorage
-        function savePurchaseHistoryToStorage() {
-            localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
-        }
-        
-        // Cargar historial desde localStorage
-        function loadPurchaseHistory() {
-            const savedHistory = localStorage.getItem('purchaseHistory');
-            if (savedHistory) {
-                purchaseHistory = JSON.parse(savedHistory);
-                renderPurchaseHistory();
-            }
-        }
-        
-        // Inicializar la tienda cuando se carga la página
+
+        // Inicializar
         document.addEventListener('DOMContentLoaded', initStore);
     </script>
 </body>
